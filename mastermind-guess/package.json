@@ -1,0 +1,27 @@
+{
+  "name": "mastermind-guess",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-aws-lambda": "^0.11.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.2.33",
+    "dynamodb-doc": "^1.0.0",
+    "grunt": "^0.4.5",
+    "moment-timezone": "^0.5.4",
+    "node-uuid": "^1.4.7",
+    "q": "^1.4.1",
+    "uuid": "^2.0.2"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "description": "Give a guess to an existing game"
+}
