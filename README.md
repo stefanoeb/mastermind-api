@@ -71,17 +71,17 @@ You can join your friends in a game, all you must have is their gameKey and your
 
 Request: 
 
-  {
-    userKey: b000f510-2064-11e6-bd1d-395810d0c754,
-    gameKey: 20a1a8f0-2065-11e6-b7ab-ab2f614c583d
-  }
+	{
+		userKey: b000f510-2064-11e6-bd1d-395810d0c754,
+		gameKey: 20a1a8f0-2065-11e6-b7ab-ab2f614c583d
+	}
 
 Response:
 
-  {
-    userKey: b000f510-2064-11e6-bd1d-395810d0c754,
-    gameKey: 20a1a8f0-2065-11e6-b7ab-ab2f614c583d
-  }
+	{
+		userKey: b000f510-2064-11e6-bd1d-395810d0c754,
+		gameKey: 20a1a8f0-2065-11e6-b7ab-ab2f614c583d
+	}
 
 **4. Making guesses**
 
@@ -91,31 +91,63 @@ Once you are in a game, you can make guesses to it and the API will tell you the
 
 Request: 
 
-  {
-    userKey: b000f510-2064-11e6-bd1d-395810d0c754,
-    gameKey: 20a1a8f0-2065-11e6-b7ab-ab2f614c583d,
-    code: RRGGBBRR
-  }
+	{
+		userKey: b000f510-2064-11e6-bd1d-395810d0c754,
+		gameKey: 20a1a8f0-2065-11e6-b7ab-ab2f614c583d,
+		code: RRGGBBRR
+	}
 
 Response:
 
-  {
-    gameKey: 4e50da60-2046-11e6-a631-a1f850bfa9f1,
-    userKey: b000f510-2064-11e6-bd1d-395810d0c754,
-    past_guesses: [
+	{
+		gameKey: 4e50da60-2046-11e6-a631-a1f850bfa9f1,
+		userKey: b000f510-2064-11e6-bd1d-395810d0c754,
+		past_guesses: [
+			{
+				exact: 0,
+				near: 0,
+				code: RRGGBBRR
+			}
+		],
+		num_guesses: 1,
+		solved: true,
+        time: 59 secs,
+        score: 598
+ 	}
+
+**5. See the ranking**
+
+Since we ask you to create an user, we can save data such as you score. It is cumulative and the faster you break the code, better!
+
+**GET /ranking**
+
+Response:
+
+	[
+		{
+        	UserName: John Fogerty,
+            Score: 598
+		},
         {
-        exact: 0,
-        near: 0,
-        code: RRGGBBRR
-        }
-    ],
-    num_guesses: 1,
-    solved: false
-  }
+        	UserName: Other Dude,
+            Score: 356
+		}
+	]
 
+## Set up the environment
 
+The Lambda function codes are in the github repo;
 
+The DynamoDB Tables (screenshot in github repo):
 
+User: Partition Key "UserKey"
+
+Mastermind: Partition Key "GameKey"
+
+The API Gateway resources are set up one for each lambda function.
+
+Questions, suggestions or feedback feel free to contact me at any time
+stefano.bourscheid@gmail.com
 
 
 
